@@ -91,7 +91,7 @@ class Desit implements IDesit {
     }
 
     private async handleDispatch(
-        action: any,
+        action: QueueAction,
     ) {
         switch (action.type) {
             case 'VISIT':
