@@ -34,7 +34,16 @@ export interface IDesit {
 
 
 export interface DesitOptions {
+    /**
+     * Application ID obtained from https://account.plurid.com/desit,
+     * or generated if self-hosting.
+     */
     appID: string;
+
+    /**
+     * Change the API endpoint if self-hosting. Default https://api.plurid.com.
+     */
+    apiEndpoint?: string;
 }
 
 
