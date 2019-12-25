@@ -1,7 +1,7 @@
 import {
     DesitVisitOptions,
     DesitInteractOptions,
-} from './';
+} from './external';
 
 import {
     DESIT_ACTIONS,

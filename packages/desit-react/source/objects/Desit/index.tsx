@@ -16,7 +16,7 @@ import {
     DesitInteractOptions,
 
     ReactElement,
-} from '../../interfaces';
+} from '../../interfaces/external';
 
 import {
     Indexed,
@@ -147,18 +147,17 @@ class Desit implements IDesit {
         actionID: string,
         input: InputDesitVisit,
     ) {
-        console.log(input);
-        console.log(this.queue);
-
-        // return await this.client.mutate({
-        //     mutation: DESIT_VISIT,
-        //     variables: {
-        //         input,
-        //     },
-        // });
-
+        // console.log(input);
+        // console.log(this.queue);
         this.removeFromQueue(actionID);
-        console.log(this.queue);
+        // console.log(this.queue);
+
+        return await this.client.mutate({
+            mutation: DESIT_VISIT,
+            variables: {
+                input,
+            },
+        });
     }
 
     private async batchDispatchVisit(
@@ -171,18 +170,17 @@ class Desit implements IDesit {
         actionID: string,
         input: InputDesitInteract,
     ) {
-        console.log(input);
-        console.log(this.queue);
-
-        // return await this.client.mutate({
-        //     mutation: DESIT_INTERACT,
-        //     variables: {
-        //         input,
-        //     },
-        // });
-
+        // console.log(input);
+        // console.log(this.queue);
         this.removeFromQueue(actionID);
-        console.log(this.queue);
+        // console.log(this.queue);
+
+        return await this.client.mutate({
+            mutation: DESIT_INTERACT,
+            variables: {
+                input,
+            },
+        });
     }
 
     private async batchDispatchInteract(
