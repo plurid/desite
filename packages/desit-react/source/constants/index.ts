@@ -55,3 +55,6 @@ export const INTERACT_TYPES = {
     play: 'play',
     pause: 'pause',
 }
+
+
+export const PLURID_API_ENDPOINT = '';
