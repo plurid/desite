@@ -30,6 +30,10 @@ class Desit implements IDesit {
     private options: DesitOptions;
     private client: ApolloClient<NormalizedCacheObject>;
 
+    // visit and interact adds to queue
+    // and the queue dispatches every 3-10 seconds
+    private queue: any[] = [];
+
     constructor(options: DesitOptions) {
         this.options = options;
         this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
@@ -45,12 +49,12 @@ class Desit implements IDesit {
             options,
         };
 
-        this.client.mutate({
-            mutation: DESIT_VISIT,
-            variables: {
-                input: inputVisitMutation,
-            },
-        });
+        const queueElement = {
+            timestamp: Date.now(),
+            type: 'VISIT',
+            input: inputVisitMutation,
+        };
+        this.queue.push(queueElement);
     }
 
     interact(
@@ -65,10 +69,45 @@ class Desit implements IDesit {
             options,
         };
 
-        this.client.mutate({
+        const queueElement = {
+            timestamp: Date.now(),
+            type: 'INTERACT',
+            input: inputInteractMutation,
+        };
+        this.queue.push(queueElement);
+    }
+
+    private async handleDispatch(
+        action: any,
+    ) {
+        switch (action.type) {
+            case 'VISIT':
+                return await this.dispatchVisit(action.input);
+            case 'INTERACT':
+                return await this.dispatchInteract(action.input);
+            default:
+                return;
+        }
+    }
+
+    private async dispatchVisit(
+        input: any,
+    ) {
+        return await this.client.mutate({
+            mutation: DESIT_VISIT,
+            variables: {
+                input,
+            },
+        });
+    }
+
+    private async dispatchInteract(
+        input: any,
+    ) {
+        return await this.client.mutate({
             mutation: DESIT_INTERACT,
             variables: {
-                input: inputInteractMutation,
+                input,
             },
         });
     }
