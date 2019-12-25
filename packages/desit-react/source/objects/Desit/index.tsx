@@ -24,6 +24,7 @@ import {
 } from '../../interfaces/internal';
 
 import {
+    DESIT_ACTIONS,
     PLURID_API_ENDPOINT,
 } from '../../constants';
 
@@ -36,8 +37,6 @@ import {
 import {
     getElementName,
 } from '../../services/utilities/react';
-
-
 
 
 
@@ -59,14 +58,17 @@ class Desit implements IDesit {
         const inputVisitMutation = {
             appID: this.options.appID,
             path,
-            options,
+            options: {
+                ...options,
+                meta: options && options.meta ? JSON.stringify(options.meta) : '',
+            },
         };
 
         const id = uuid();
         const queueAction: QueueAction = {
             id,
             timestamp: Date.now(),
-            type: 'VISIT',
+            type: DESIT_ACTIONS.VISIT,
             input: inputVisitMutation,
         };
         this.queue[id] = queueAction;
@@ -83,14 +85,17 @@ class Desit implements IDesit {
             appID: this.options.appID,
             type,
             element: elementName,
-            options,
+            options: {
+                ...options,
+                meta: options && options.meta ? JSON.stringify(options.meta) : '',
+            },
         };
 
         const id = uuid();
         const queueAction: QueueAction = {
             id,
             timestamp: Date.now(),
-            type: 'INTERACT',
+            type: DESIT_ACTIONS.INTERACT,
             input: inputInteractMutation,
         };
         this.queue[id] = queueAction;
@@ -118,12 +123,12 @@ class Desit implements IDesit {
         action: QueueAction,
     ) {
         switch (action.type) {
-            case 'VISIT':
+            case DESIT_ACTIONS.VISIT:
                 return await this.dispatchVisit(
                     action.id,
                     action.input,
                 );
-            case 'INTERACT':
+            case DESIT_ACTIONS.INTERACT:
                 return await this.dispatchInteract(
                     action.id,
                     action.input,
