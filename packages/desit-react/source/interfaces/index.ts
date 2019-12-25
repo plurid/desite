@@ -60,4 +60,4 @@ export interface DesitInteractOptions {
 }
 
 
-export type ReactElement = JSX.Element | React.FC | React.Component;
+export type ReactElement = JSX.Element | React.FC;
