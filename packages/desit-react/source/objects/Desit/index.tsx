@@ -110,24 +110,38 @@ class Desit implements IDesit {
         };
     }
 
+    private removeFromQueue(id: string) {
+        delete this.queue[id];
+    }
+
     private async handleDispatch(
         action: QueueAction,
     ) {
         switch (action.type) {
             case 'VISIT':
-                return await this.dispatchVisit(action.input);
+                return await this.dispatchVisit(
+                    action.id,
+                    action.input,
+                );
             case 'INTERACT':
-                return await this.dispatchInteract(action.input);
+                return await this.dispatchInteract(
+                    action.id,
+                    action.input,
+                );
             default:
                 return;
         }
     }
 
     private async dispatchVisit(
+        actionID: string,
         input: any,
     ) {
         console.log(input);
         console.log(this.queue);
+        this.removeFromQueue(actionID);
+        console.log(this.queue);
+
         // return await this.client.mutate({
         //     mutation: DESIT_VISIT,
         //     variables: {
@@ -136,17 +150,33 @@ class Desit implements IDesit {
         // });
     }
 
+    private async batchDispatchVisit(
+        // TODO
+        // dispatch multiple visits based on queue throttling
+    ) {
+    }
+
     private async dispatchInteract(
+        actionID: string,
         input: any,
     ) {
         console.log(input);
         console.log(this.queue);
+        this.removeFromQueue(actionID);
+        console.log(this.queue);
+
         // return await this.client.mutate({
         //     mutation: DESIT_INTERACT,
         //     variables: {
         //         input,
         //     },
         // });
+    }
+
+    private async batchDispatchInteract(
+    ) {
+        // TODO
+        // dispatch multiple interacts based on queue throttling
     }
 }
 
