@@ -15,6 +15,10 @@ import {
 } from '../../interfaces';
 
 import {
+    QueueAction,
+} from '../../interfaces/internal';
+
+import {
     PLURID_API_ENDPOINT,
 } from '../../constants';
 
@@ -32,7 +36,7 @@ class Desit implements IDesit {
 
     // visit and interact adds to queue
     // and the queue dispatches every 3-10 seconds
-    private queue: any[] = [];
+    private queue: QueueAction[] = [];
 
     constructor(options: DesitOptions) {
         this.options = options;
@@ -49,12 +53,12 @@ class Desit implements IDesit {
             options,
         };
 
-        const queueElement = {
+        const queueAction: QueueAction = {
             timestamp: Date.now(),
             type: 'VISIT',
             input: inputVisitMutation,
         };
-        this.queue.push(queueElement);
+        this.queue.push(queueAction);
     }
 
     interact(
@@ -69,12 +73,12 @@ class Desit implements IDesit {
             options,
         };
 
-        const queueElement = {
+        const queueAction: QueueAction = {
             timestamp: Date.now(),
             type: 'INTERACT',
             input: inputInteractMutation,
         };
-        this.queue.push(queueElement);
+        this.queue.push(queueAction);
     }
 
     private async handleDispatch(
