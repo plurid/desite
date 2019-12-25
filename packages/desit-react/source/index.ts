@@ -1,5 +1,5 @@
 export * from './constants';
-export * from './interfaces';
+export * from './interfaces/external';
 
 
 import Desit from './objects/Desit';
