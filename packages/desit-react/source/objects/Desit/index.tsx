@@ -32,12 +32,12 @@ import {
 
 class Desit implements IDesit {
     private options: DesitOptions;
-    private client: ApolloClient<NormalizedCacheObject>;
+    // private client: ApolloClient<NormalizedCacheObject>;
     private queue: QueueAction[];
 
     constructor(options: DesitOptions) {
         this.options = options;
-        this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
+        // this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
 
         this.queue = new Proxy([], this.queueChange());
     }
@@ -65,10 +65,19 @@ class Desit implements IDesit {
         element: ReactElement,
         options?: DesitInteractOptions,
     ) {
+        // console.log(typeof element);
+        // console.log(typeof element === 'function' ? element() : '');
+
+        const elementType = typeof element === 'object'
+            ? element.type
+            : typeof element === 'function'
+                ? (element as any)().type
+                : '';
+
         const inputInteractMutation = {
             appID: this.options.appID,
             type,
-            element,
+            element: elementType,
             options,
         };
 
@@ -82,9 +91,12 @@ class Desit implements IDesit {
 
     private queueChange() {
         return {
-            set: (target: any, property: any, value: any) => {
-                console.log('setting ' + property + ' for ' + target + ' with value ' + value);
-                this.handleDispatch(target[property]);
+            set: (
+                _: any,
+                __: any,
+                value: QueueAction,
+            ) => {
+                this.handleDispatch(value);
                 return true;
             }
         };
@@ -106,23 +118,25 @@ class Desit implements IDesit {
     private async dispatchVisit(
         input: any,
     ) {
-        return await this.client.mutate({
-            mutation: DESIT_VISIT,
-            variables: {
-                input,
-            },
-        });
+        console.log(input);
+        // return await this.client.mutate({
+        //     mutation: DESIT_VISIT,
+        //     variables: {
+        //         input,
+        //     },
+        // });
     }
 
     private async dispatchInteract(
         input: any,
     ) {
-        return await this.client.mutate({
-            mutation: DESIT_INTERACT,
-            variables: {
-                input,
-            },
-        });
+        console.log(input);
+        // return await this.client.mutate({
+        //     mutation: DESIT_INTERACT,
+        //     variables: {
+        //         input,
+        //     },
+        // });
     }
 }
 
