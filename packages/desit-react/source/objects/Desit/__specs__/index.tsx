@@ -36,8 +36,8 @@ describe('Desit', () => {
             appID: desitAppID,
         });
         desit.visit('/one');
-        // desit.visit('/two');
-        // desit.visit('/three');
+        desit.visit('/two');
+        desit.visit('/three');
         expect(true).toBeTruthy();
     });
 
@@ -46,8 +46,8 @@ describe('Desit', () => {
             appID: desitAppID,
         });
         desit.interact(INTERACT_TYPES.click, ButtonJSX, {userID: 'one'});
-        // desit.interact('click2', ButtonFC, {userID: 'one'});
-        // desit.interact('click3', ButtonClass, {userID: 'one'});
+        desit.interact('click2', ButtonFC, {userID: 'one'});
+        desit.interact('click3', ButtonClass, {userID: 'one'});
         expect(true).toBeTruthy();
     });
 });
