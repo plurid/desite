@@ -139,8 +139,6 @@ class Desit implements IDesit {
     ) {
         console.log(input);
         console.log(this.queue);
-        this.removeFromQueue(actionID);
-        console.log(this.queue);
 
         // return await this.client.mutate({
         //     mutation: DESIT_VISIT,
@@ -148,6 +146,9 @@ class Desit implements IDesit {
         //         input,
         //     },
         // });
+
+        this.removeFromQueue(actionID);
+        console.log(this.queue);
     }
 
     private async batchDispatchVisit(
@@ -162,8 +163,6 @@ class Desit implements IDesit {
     ) {
         console.log(input);
         console.log(this.queue);
-        this.removeFromQueue(actionID);
-        console.log(this.queue);
 
         // return await this.client.mutate({
         //     mutation: DESIT_INTERACT,
@@ -171,6 +170,9 @@ class Desit implements IDesit {
         //         input,
         //     },
         // });
+
+        this.removeFromQueue(actionID);
+        console.log(this.queue);
     }
 
     private async batchDispatchInteract(
