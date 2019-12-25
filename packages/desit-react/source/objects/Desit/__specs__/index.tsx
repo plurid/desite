@@ -41,13 +41,13 @@ describe('Desit', () => {
         expect(true).toBeTruthy();
     });
 
-    it('interact', () => {
+    it.only('interact', () => {
         const desit = new Desit({
             appID: desitAppID,
         });
         desit.interact(INTERACT_TYPES.click, ButtonJSX, {userID: 'one'});
-        desit.interact('click2', ButtonFC, {userID: 'one'});
-        desit.interact('click3', ButtonClass, {userID: 'one'});
+        // desit.interact('click2', ButtonFC, {userID: 'one'});
+        // desit.interact('click3', ButtonClass, {userID: 'one'});
         expect(true).toBeTruthy();
     });
 });
