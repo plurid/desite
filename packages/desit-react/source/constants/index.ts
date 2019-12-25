@@ -66,9 +66,3 @@ export const PLURID_API_ENDPOINT = environment.production
     : environment.development
         ? 'https://api.plurid.dev/graphql'
         : 'http://localhost:33600/graphql';
-
-
-export const DESIT_ACTIONS = {
-    VISIT: 'VISIT',
-    INTERACT: 'INTERACT',
-};

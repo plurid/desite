@@ -21,12 +21,17 @@ import {
 import {
     Indexed,
     QueueAction,
+    InputDesitVisit,
+    InputDesitInteract,
 } from '../../interfaces/internal';
 
 import {
-    DESIT_ACTIONS,
     PLURID_API_ENDPOINT,
 } from '../../constants';
+
+import {
+    DESIT_ACTIONS,
+} from '../../enumerations';
 
 import graphqlClient from '../../services/graphql/client';
 import {
@@ -55,7 +60,7 @@ class Desit implements IDesit {
         path: string,
         options?: DesitVisitOptions,
     ) {
-        const inputVisitMutation = {
+        const inputVisitMutation: InputDesitVisit = {
             appID: this.options.appID,
             path,
             options: {
@@ -81,7 +86,7 @@ class Desit implements IDesit {
     ) {
         const elementName = getElementName(element);
 
-        const inputInteractMutation = {
+        const inputInteractMutation: InputDesitInteract = {
             appID: this.options.appID,
             type,
             element: elementName,
@@ -140,7 +145,7 @@ class Desit implements IDesit {
 
     private async dispatchVisit(
         actionID: string,
-        input: any,
+        input: InputDesitVisit,
     ) {
         console.log(input);
         console.log(this.queue);
@@ -164,7 +169,7 @@ class Desit implements IDesit {
 
     private async dispatchInteract(
         actionID: string,
-        input: any,
+        input: InputDesitInteract,
     ) {
         console.log(input);
         console.log(this.queue);
