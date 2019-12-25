@@ -161,9 +161,9 @@ class Desit implements IDesit {
     }
 
     private async batchDispatchVisit(
+    ) {
         // TODO
         // dispatch multiple visits based on queue throttling
-    ) {
     }
 
     private async dispatchInteract(
