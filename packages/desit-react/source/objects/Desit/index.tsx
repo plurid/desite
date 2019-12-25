@@ -49,6 +49,7 @@ class Desit implements IDesit {
     private options: DesitOptions;
     private client: ApolloClient<NormalizedCacheObject>;
     private queue: Indexed<QueueAction>;
+    private instanceID = uuid() + uuid();
 
     constructor(options: DesitOptions) {
         this.options = options;
@@ -65,7 +66,12 @@ class Desit implements IDesit {
             path,
             options: {
                 ...options,
-                meta: options && options.meta ? JSON.stringify(options.meta) : '',
+                userID: (options && options.userID)
+                    || this.options.userID
+                    || this.instanceID,
+                meta: options && options.meta
+                    ? JSON.stringify(options.meta)
+                    : '',
             },
         };
 
@@ -92,7 +98,12 @@ class Desit implements IDesit {
             element: elementName,
             options: {
                 ...options,
-                meta: options && options.meta ? JSON.stringify(options.meta) : '',
+                userID: (options && options.userID)
+                    || this.options.userID
+                    || this.instanceID,
+                meta: options && options.meta
+                    ? JSON.stringify(options.meta)
+                    : '',
             },
         };
 

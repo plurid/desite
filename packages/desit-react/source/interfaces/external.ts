@@ -44,6 +44,8 @@ export interface DesitOptions {
      * Change the API endpoint if self-hosting. Default https://api.plurid.com.
      */
     apiEndpoint?: string;
+
+    userID?: string;
 }
 
 
