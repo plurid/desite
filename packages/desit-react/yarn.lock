@@ -307,6 +307,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@plurid/plurid-functions@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@plurid/plurid-functions/-/plurid-functions-0.1.4.tgz#e67d94df1db8646118144963ff0cb1b78316760b"
+  integrity sha512-x3bmBQQKQ+ARM5lt4d/6evQS22bgKVadkFTBd/fTaKKa6wVmwdUcqtGkB6A3nqWsKS2KivJ6AmJkMGW1twz/QQ==
+
 "@types/babel__core@^7.1.0":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.3.tgz#e441ea7df63cd080dfcd02ab199e6d16a735fc30"

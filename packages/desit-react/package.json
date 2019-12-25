@@ -42,16 +42,18 @@
         "prepublishOnly": "yarn build"
     },
     "peerDependencies": {
-        "react": ">=16",
-        "react-dom": ">=16",
+        "@plurid/plurid-functions": ">=0.1",
         "apollo-cache-inmemory": ">=1.6",
         "apollo-client": ">=2.6",
         "apollo-link-http": ">=1.5",
         "graphql": ">=14.5",
-        "graphql-tag": ">=2.10"
+        "graphql-tag": ">=2.10",
+        "react": ">=16",
+        "react-dom": ">=16"
     },
     "devDependencies": {
         "@babel/core": "^7.7.7",
+        "@plurid/plurid-functions": "^0.1.4",
         "@types/enzyme": "^3.10.4",
         "@types/enzyme-adapter-react-16": "^1.0.5",
         "@types/jest": "^24.0.24",
@@ -62,7 +64,6 @@
         "apollo-cache-inmemory": "^1.6.5",
         "apollo-client": "^2.6.8",
         "apollo-link-http": "^1.5.16",
-        "babel-plugin-styled-components": "^1.10.6",
         "babel-runtime": "^6.26.0",
         "cross-env": "^6.0.3",
         "dotenv-cli": "^3.1.0",
