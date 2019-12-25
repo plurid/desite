@@ -28,6 +28,12 @@ import {
     DESIT_INTERACT,
 } from '../../services/graphql/mutate';
 
+import {
+    getElementName,
+} from '../../services/utilities/react';
+
+
+
 
 
 class Desit implements IDesit {
@@ -38,7 +44,6 @@ class Desit implements IDesit {
     constructor(options: DesitOptions) {
         this.options = options;
         // this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
-
         this.queue = new Proxy([], this.queueChange());
     }
 
@@ -65,19 +70,12 @@ class Desit implements IDesit {
         element: ReactElement,
         options?: DesitInteractOptions,
     ) {
-        // console.log(typeof element);
-        // console.log(typeof element === 'function' ? element() : '');
-
-        const elementType = typeof element === 'object'
-            ? element.type
-            : typeof element === 'function'
-                ? (element as any)().type
-                : '';
+        const elementName = getElementName(element);
 
         const inputInteractMutation = {
             appID: this.options.appID,
             type,
-            element: elementType,
+            element: elementName,
             options,
         };
 
@@ -92,10 +90,11 @@ class Desit implements IDesit {
     private queueChange() {
         return {
             set: (
-                _: any,
-                __: any,
+                target: QueueAction[],
+                property: string,
                 value: QueueAction,
             ) => {
+                target[property] = value;
                 this.handleDispatch(value);
                 return true;
             }
@@ -119,6 +118,7 @@ class Desit implements IDesit {
         input: any,
     ) {
         console.log(input);
+        console.log(this.queue);
         // return await this.client.mutate({
         //     mutation: DESIT_VISIT,
         //     variables: {
@@ -131,6 +131,7 @@ class Desit implements IDesit {
         input: any,
     ) {
         console.log(input);
+        console.log(this.queue);
         // return await this.client.mutate({
         //     mutation: DESIT_INTERACT,
         //     variables: {
