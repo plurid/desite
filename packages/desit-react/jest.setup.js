@@ -7,3 +7,5 @@ Object.defineProperty(global.self, 'crypto', {
         getRandomValues: arr => crypto.randomBytes(arr.length),
     },
 });
+
+global.fetch = require('node-fetch');
