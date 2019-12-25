@@ -2,7 +2,7 @@ module.exports = {
     transform: {
         '.(ts|tsx)': 'ts-jest'
     },
-    testEnvironment: 'node',
+    testEnvironment: 'jsdom',
     testRegex: '(/__specs__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
     moduleFileExtensions: [
         'ts',
@@ -28,5 +28,8 @@ module.exports = {
     },
     collectCoverageFrom: [
         'source/*.{js,ts}'
+    ],
+    setupFiles: [
+        './jest.setup.js'
     ]
 }

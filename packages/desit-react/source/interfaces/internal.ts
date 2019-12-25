@@ -4,3 +4,8 @@ export interface QueueAction {
     type: string;
     input: any;
 }
+
+
+export interface Indexed<T> {
+    [key: string]: T;
+}
