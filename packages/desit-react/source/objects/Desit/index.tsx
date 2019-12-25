@@ -41,6 +41,8 @@ class Desit implements IDesit {
     constructor(options: DesitOptions) {
         this.options = options;
         this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
+
+        new Proxy(this.queue, this.queueChange());
     }
 
     visit(
@@ -79,6 +81,16 @@ class Desit implements IDesit {
             input: inputInteractMutation,
         };
         this.queue.push(queueAction);
+    }
+
+    private queueChange() {
+        return {
+            set: (target: any, property: any, value: any) => {
+                console.log('setting ' + property + ' for ' + target + ' with value ' + value);
+                this.handleDispatch(target[property]);
+                return true;
+            }
+        };
     }
 
     private async handleDispatch(
