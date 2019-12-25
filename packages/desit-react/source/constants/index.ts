@@ -1,3 +1,7 @@
+import environment from '../services/utilities/environment';
+
+
+
 /**
  * General interaction types to be used with `interact`.
  * Loosely based on https://developer.mozilla.org/en-US/docs/Web/Events
@@ -57,4 +61,8 @@ export const INTERACT_TYPES = {
 }
 
 
-export const PLURID_API_ENDPOINT = '';
+export const PLURID_API_ENDPOINT = environment.production
+    ? 'https://api.plurid.com/graphql'
+    : environment.development
+        ? 'https://api.plurid.dev/graphql'
+        : 'http://localhost:33600/graphql';
