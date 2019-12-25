@@ -58,6 +58,7 @@ class Desit implements IDesit {
         };
 
         const queueAction: QueueAction = {
+            id: '',
             timestamp: Date.now(),
             type: 'VISIT',
             input: inputVisitMutation,
@@ -80,6 +81,7 @@ class Desit implements IDesit {
         };
 
         const queueAction: QueueAction = {
+            id: '',
             timestamp: Date.now(),
             type: 'INTERACT',
             input: inputInteractMutation,
