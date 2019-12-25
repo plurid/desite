@@ -74,6 +74,7 @@
         "graphql-tag": "^2.10.1",
         "jest": "^24.9.0",
         "jest-config": "^24.9.0",
+        "node-fetch": "^2.6.0",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
         "react-redux": "^7.1.3",

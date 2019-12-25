@@ -43,12 +43,12 @@ import {
 
 class Desit implements IDesit {
     private options: DesitOptions;
-    // private client: ApolloClient<NormalizedCacheObject>;
+    private client: ApolloClient<NormalizedCacheObject>;
     private queue: Indexed<QueueAction>;
 
     constructor(options: DesitOptions) {
         this.options = options;
-        // this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
+        this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
         this.queue = new Proxy({}, this.queueChange());
     }
 
