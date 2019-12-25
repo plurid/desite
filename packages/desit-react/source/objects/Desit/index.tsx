@@ -33,9 +33,6 @@ import {
 class Desit implements IDesit {
     private options: DesitOptions;
     private client: ApolloClient<NormalizedCacheObject>;
-
-    // visit and interact adds to queue
-    // and the queue dispatches every 3-10 seconds
     private queue: QueueAction[];
 
     constructor(options: DesitOptions) {
