@@ -1,9 +1,10 @@
-import React from 'react';
-
 import {
     IDesit,
     DesitOptions,
+    DesitVisitOptions,
     DesitInteractOptions,
+
+    ReactElement,
 } from '../../interfaces';
 
 
@@ -17,13 +18,14 @@ class Desit implements IDesit {
 
     visit(
         path: string,
+        options?: DesitVisitOptions,
     ) {
         // record page visit
     }
 
     interact(
         type: string,
-        element: React.FC,
+        element: ReactElement,
         options?: DesitInteractOptions,
     ) {
         // record page interaction
