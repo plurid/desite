@@ -36,13 +36,13 @@ class Desit implements IDesit {
 
     // visit and interact adds to queue
     // and the queue dispatches every 3-10 seconds
-    private queue: QueueAction[] = [];
+    private queue: QueueAction[];
 
     constructor(options: DesitOptions) {
         this.options = options;
         this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
 
-        new Proxy(this.queue, this.queueChange());
+        this.queue = new Proxy([], this.queueChange());
     }
 
     visit(
