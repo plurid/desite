@@ -36,12 +36,12 @@ describe('Desit', () => {
             appID: desitAppID,
         });
         desit.visit('/one');
-        desit.visit('/two');
-        desit.visit('/three');
+        // desit.visit('/two');
+        // desit.visit('/three');
         expect(true).toBeTruthy();
     });
 
-    it.only('interact', () => {
+    it('interact', () => {
         const desit = new Desit({
             appID: desitAppID,
         });
