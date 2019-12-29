@@ -11,7 +11,6 @@ import {
 
 export interface QueueActionPure {
     id: string;
-    timestamp: number;
 }
 
 export interface QueueActionVisit extends QueueActionPure {
@@ -34,6 +33,7 @@ export interface Indexed<T> {
 
 
 export interface InputDesitVisit {
+    timestamp: number;
     appID: string;
     path: string;
     options: DesitVisitOptions;
@@ -41,6 +41,7 @@ export interface InputDesitVisit {
 
 
 export interface InputDesitInteract {
+    timestamp: number;
     appID: string;
     type: string;
     element: string;
