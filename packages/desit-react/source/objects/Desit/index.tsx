@@ -87,7 +87,7 @@ class Desit implements IDesit {
 
     interact(
         type: string,
-        element: ReactElement,
+        element: ReactElement | string,
         options?: DesitInteractOptions,
     ) {
         const elementName = getElementName(element);
@@ -131,7 +131,9 @@ class Desit implements IDesit {
         };
     }
 
-    private removeFromQueue(id: string) {
+    private removeFromQueue(
+        id: string,
+    ) {
         delete this.queue[id];
     }
 
@@ -159,19 +161,11 @@ class Desit implements IDesit {
         input: InputDesitVisit,
     ) {
         try {
-            const mutationInput = {
-                ...input,
-                options: {
-                    ...input.options,
-                    meta: JSON.stringify(input.options.meta),
-                },
-            };
-
             this.removeFromQueue(actionID);
             return await this.client.mutate({
                 mutation: DESIT_VISIT,
                 variables: {
-                    input: mutationInput,
+                    input,
                 },
             });
         } catch (error) {
@@ -190,19 +184,11 @@ class Desit implements IDesit {
         input: InputDesitInteract,
     ) {
         try {
-            const mutationInput = {
-                ...input,
-                options: {
-                    ...input.options,
-                    meta: JSON.stringify(input.options.meta),
-                },
-            };
-
             this.removeFromQueue(actionID);
             return await this.client.mutate({
                 mutation: DESIT_INTERACT,
                 variables: {
-                    input: mutationInput,
+                    input,
                 },
             });
         } catch (error) {
