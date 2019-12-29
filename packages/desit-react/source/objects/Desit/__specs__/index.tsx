@@ -52,6 +52,7 @@ describe('Desit', () => {
             'NamedComponent',
             {
                 userID: 'one',
+                path: '/foo',
                 meta: { boo: 'coo' },
             },
         );
