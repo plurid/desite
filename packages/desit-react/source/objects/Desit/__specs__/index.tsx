@@ -35,13 +35,13 @@ describe('Desit', () => {
         const desit = new Desit({
             appID: desitAppID,
         });
-        desit.visit('/one');
-        // desit.visit('/two', { userID: 'foo', meta: { boo: 'coo'}});
+        // desit.visit('/one');
+        desit.visit('/two', { userID: 'foo', meta: { boo: 'coo'}});
         // desit.visit('/three');
         expect(true).toBeTruthy();
     });
 
-    it.only('interact', () => {
+    it('interact', () => {
         const desit = new Desit({
             appID: desitAppID,
         });
