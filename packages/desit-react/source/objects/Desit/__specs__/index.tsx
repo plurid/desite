@@ -29,15 +29,15 @@ class ButtonClass extends React.Component {
 }
 
 describe('Desit', () => {
-    const desitAppID = 'desitAppID';
+    const desitAppID = 'desit_18b70b77f4b1454b826ba0677240b9ac';
 
-    it('visit', () => {
+    it.only('visit', () => {
         const desit = new Desit({
             appID: desitAppID,
         });
         desit.visit('/one');
-        desit.visit('/two');
-        desit.visit('/three');
+        // desit.visit('/two');
+        // desit.visit('/three');
         expect(true).toBeTruthy();
     });
 
@@ -46,8 +46,8 @@ describe('Desit', () => {
             appID: desitAppID,
         });
         desit.interact(INTERACT_TYPES.click, ButtonJSX, {userID: 'one'});
-        desit.interact('click2', ButtonFC, {userID: 'one'});
-        desit.interact('click3', ButtonClass, {userID: 'one'});
+        // desit.interact('click2', ButtonFC, {userID: 'one'});
+        // desit.interact('click3', ButtonClass, {userID: 'one'});
         expect(true).toBeTruthy();
     });
 });
