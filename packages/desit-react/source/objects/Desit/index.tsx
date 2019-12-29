@@ -158,17 +158,17 @@ class Desit implements IDesit {
         actionID: string,
         input: InputDesitVisit,
     ) {
-        // console.log(input);
-        // console.log(this.queue);
-        this.removeFromQueue(actionID);
-        // console.log(this.queue);
-
-        return await this.client.mutate({
-            mutation: DESIT_VISIT,
-            variables: {
-                input,
-            },
-        });
+        try {
+            this.removeFromQueue(actionID);
+            return await this.client.mutate({
+                mutation: DESIT_VISIT,
+                variables: {
+                    input,
+                },
+            });
+        } catch (error) {
+            return;
+        }
     }
 
     private async batchDispatchVisit(
@@ -181,17 +181,17 @@ class Desit implements IDesit {
         actionID: string,
         input: InputDesitInteract,
     ) {
-        // console.log(input);
-        // console.log(this.queue);
-        this.removeFromQueue(actionID);
-        // console.log(this.queue);
-
-        return await this.client.mutate({
-            mutation: DESIT_INTERACT,
-            variables: {
-                input,
-            },
-        });
+        try {
+            this.removeFromQueue(actionID);
+            return await this.client.mutate({
+                mutation: DESIT_INTERACT,
+                variables: {
+                    input,
+                },
+            });
+        } catch (error) {
+            return;
+        }
     }
 
     private async batchDispatchInteract(
