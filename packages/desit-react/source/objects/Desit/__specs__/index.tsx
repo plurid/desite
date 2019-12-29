@@ -31,17 +31,17 @@ class ButtonClass extends React.Component {
 describe('Desit', () => {
     const desitAppID = 'desit_18b70b77f4b1454b826ba0677240b9ac';
 
-    it.only('visit', () => {
+    it('visit', () => {
         const desit = new Desit({
             appID: desitAppID,
         });
         desit.visit('/one');
-        // desit.visit('/two');
+        // desit.visit('/two', { userID: 'foo', meta: { boo: 'coo'}});
         // desit.visit('/three');
         expect(true).toBeTruthy();
     });
 
-    it('interact', () => {
+    it.only('interact', () => {
         const desit = new Desit({
             appID: desitAppID,
         });

@@ -159,11 +159,19 @@ class Desit implements IDesit {
         input: InputDesitVisit,
     ) {
         try {
+            const mutationInput = {
+                ...input,
+                options: {
+                    ...input.options,
+                    meta: JSON.stringify(input.options.meta),
+                },
+            };
+
             this.removeFromQueue(actionID);
             return await this.client.mutate({
                 mutation: DESIT_VISIT,
                 variables: {
-                    input,
+                    input: mutationInput,
                 },
             });
         } catch (error) {
@@ -182,11 +190,19 @@ class Desit implements IDesit {
         input: InputDesitInteract,
     ) {
         try {
+            const mutationInput = {
+                ...input,
+                options: {
+                    ...input.options,
+                    meta: JSON.stringify(input.options.meta),
+                },
+            };
+
             this.removeFromQueue(actionID);
             return await this.client.mutate({
                 mutation: DESIT_INTERACT,
                 variables: {
-                    input,
+                    input: mutationInput,
                 },
             });
         } catch (error) {
