@@ -22,12 +22,13 @@ export interface IDesit {
      * @param type - If the type has not been registered before,
      *               it will create a new one in the dashboard.
      *               For starters consider using the standard `INTERACT_TYPES`.
-     * @param element - React functional or class component, or a pure JSX element.
+     * @param element - React functional or class component, or a pure JSX element,
+     *                  or an identification string.
      * @param options - Pass in the `userID` and more.
      */
     interact(
         type: string,
-        element: ReactElement,
+        element: ReactElement | string,
         options?: DesitInteractOptions,
     ): void;
 }
