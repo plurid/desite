@@ -46,7 +46,15 @@ describe('Desit', () => {
             appID: desitAppID,
         });
         // desit.interact(INTERACT_TYPES.click, ButtonJSX, {userID: 'one'});
-        desit.interact('click2', ButtonFC, {userID: 'one', meta: { boo: 'coo'}});
+        // desit.interact('click2', ButtonFC, {userID: 'one', meta: { boo: 'coo'}});
+        desit.interact(
+            'click2',
+            'NamedComponent',
+            {
+                userID: 'one',
+                meta: { boo: 'coo' },
+            },
+        );
         // desit.interact('click3', ButtonClass, {userID: 'one'});
         expect(true).toBeTruthy();
     });

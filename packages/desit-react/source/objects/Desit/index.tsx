@@ -62,6 +62,7 @@ class Desit implements IDesit {
         options?: DesitVisitOptions,
     ) {
         const inputVisitMutation: InputDesitVisit = {
+            timestamp: Date.now(),
             appID: this.options.appID,
             path,
             options: {
@@ -78,7 +79,6 @@ class Desit implements IDesit {
         const id = uuid();
         const queueAction: QueueAction = {
             id,
-            timestamp: Date.now(),
             type: DESIT_ACTIONS.VISIT,
             input: inputVisitMutation,
         };
@@ -93,6 +93,7 @@ class Desit implements IDesit {
         const elementName = getElementName(element);
 
         const inputInteractMutation: InputDesitInteract = {
+            timestamp: Date.now(),
             appID: this.options.appID,
             type,
             element: elementName,
@@ -110,7 +111,6 @@ class Desit implements IDesit {
         const id = uuid();
         const queueAction: QueueAction = {
             id,
-            timestamp: Date.now(),
             type: DESIT_ACTIONS.INTERACT,
             input: inputInteractMutation,
         };
