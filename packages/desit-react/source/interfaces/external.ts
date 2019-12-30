@@ -46,7 +46,16 @@ export interface DesitOptions {
      */
     apiEndpoint?: string;
 
+    /**
+     * Initialize the session for a specific user ID.
+     */
     userID?: string;
+
+    /**
+     * Listen for URL changes (within the same web page)
+     * and automatically trigger a `visit()`.
+     */
+    visitOnURLChange?: boolean;
 }
 
 
