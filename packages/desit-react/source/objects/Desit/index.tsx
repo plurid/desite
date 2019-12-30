@@ -55,6 +55,15 @@ class Desit implements IDesit {
         this.options = options;
         this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
         this.queue = new Proxy({}, this.queueChange());
+
+        if (this.options.visitOnURLChange && window) {
+            window.addEventListener('popstate', (event) => {
+                const visitOptions: DesitVisitOptions = {
+                    userID: this.options.userID,
+                };
+                this.visit(location.pathname, visitOptions);
+            });
+        }
     }
 
     visit(
