@@ -2,8 +2,8 @@ export * from './constants';
 export * from './interfaces/external';
 
 
-import Desit from './objects/Desit';
+import Desite from './objects/Desite';
 
 
 
-export default Desit;
+export default Desite;

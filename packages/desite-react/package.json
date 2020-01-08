@@ -1,7 +1,7 @@
 {
-    "name": "@plurid/desit-react",
+    "name": "@plurid/desite-react",
     "version": "0.1.0",
-    "description": "React implementation of desit to track user sittings.",
+    "description": "React implementation of desite to track user sittings.",
     "keywords": [
         "desit",
         "react"
@@ -10,16 +10,16 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/plurid/desit"
+        "url": "https://github.com/plurid/desite"
     },
     "bugs": {
         "email": "feedback@plurid.com",
-        "url": "https://github.com/plurid/desit/issues"
+        "url": "https://github.com/plurid/desite/issues"
     },
     "publishConfig": {
         "access": "public"
     },
-    "homepage": "https://github.com/plurid/desit/blob/master/packages/desit-react/README.md",
+    "homepage": "https://github.com/plurid/desite/blob/master/packages/desite-react/README.md",
     "files": [
         "distribution/"
     ],
