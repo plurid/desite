@@ -1,10 +1,10 @@
 import {
-    DesitVisitOptions,
-    DesitInteractOptions,
+    DesiteVisitOptions,
+    DesiteInteractOptions,
 } from './external';
 
 import {
-    DESIT_ACTIONS,
+    DESITE_ACTIONS,
 } from '../enumerations';
 
 
@@ -14,13 +14,13 @@ export interface QueueActionPure {
 }
 
 export interface QueueActionVisit extends QueueActionPure {
-    type: typeof DESIT_ACTIONS.VISIT;
-    input: InputDesitVisit;
+    type: typeof DESITE_ACTIONS.VISIT;
+    input: InputDesiteVisit;
 }
 
 export interface QueueActionInteract extends QueueActionPure {
-    type: typeof DESIT_ACTIONS.INTERACT;
-    input: InputDesitInteract;
+    type: typeof DESITE_ACTIONS.INTERACT;
+    input: InputDesiteInteract;
 }
 
 export type QueueAction = QueueActionVisit
@@ -32,18 +32,18 @@ export interface Indexed<T> {
 }
 
 
-export interface InputDesitVisit {
+export interface InputDesiteVisit {
     timestamp: number;
     appID: string;
     path: string;
-    options: DesitVisitOptions;
+    options: DesiteVisitOptions;
 }
 
 
-export interface InputDesitInteract {
+export interface InputDesiteInteract {
     timestamp: number;
     appID: string;
     type: string;
     element: string;
-    options: DesitInteractOptions;
+    options: DesiteInteractOptions;
 }

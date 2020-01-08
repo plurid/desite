@@ -10,10 +10,10 @@ import {
 } from '@plurid/plurid-functions';
 
 import {
-    IDesit,
-    DesitOptions,
-    DesitVisitOptions,
-    DesitInteractOptions,
+    IDesite,
+    DesiteOptions,
+    DesiteVisitOptions,
+    DesiteInteractOptions,
 
     ReactElement,
 } from '../../interfaces/external';
@@ -21,8 +21,8 @@ import {
 import {
     Indexed,
     QueueAction,
-    InputDesitVisit,
-    InputDesitInteract,
+    InputDesiteVisit,
+    InputDesiteInteract,
 } from '../../interfaces/internal';
 
 import {
@@ -30,13 +30,13 @@ import {
 } from '../../constants';
 
 import {
-    DESIT_ACTIONS,
+    DESITE_ACTIONS,
 } from '../../enumerations';
 
 import graphqlClient from '../../services/graphql/client';
 import {
-    DESIT_VISIT,
-    DESIT_INTERACT,
+    DESITE_VISIT,
+    DESITE_INTERACT,
 } from '../../services/graphql/mutate';
 
 import {
@@ -45,20 +45,20 @@ import {
 
 
 
-class Desit implements IDesit {
-    private options: DesitOptions;
+class Desite implements IDesite {
+    private options: DesiteOptions;
     private client: ApolloClient<NormalizedCacheObject>;
     private queue: Indexed<QueueAction>;
     private instanceID = uuid() + uuid();
 
-    constructor(options: DesitOptions) {
+    constructor(options: DesiteOptions) {
         this.options = options;
         this.client = graphqlClient(this.options.apiEndpoint || PLURID_API_ENDPOINT);
         this.queue = new Proxy({}, this.queueChange());
 
         if (this.options.visitOnURLChange && window) {
             window.addEventListener('popstate', (event) => {
-                const visitOptions: DesitVisitOptions = {
+                const visitOptions: DesiteVisitOptions = {
                     userID: this.options.userID,
                 };
                 this.visit(location.pathname, visitOptions);
@@ -68,9 +68,9 @@ class Desit implements IDesit {
 
     visit(
         path: string,
-        options?: DesitVisitOptions,
+        options?: DesiteVisitOptions,
     ) {
-        const inputVisitMutation: InputDesitVisit = {
+        const inputVisitMutation: InputDesiteVisit = {
             timestamp: Date.now(),
             appID: this.options.appID,
             path,
@@ -88,7 +88,7 @@ class Desit implements IDesit {
         const id = uuid();
         const queueAction: QueueAction = {
             id,
-            type: DESIT_ACTIONS.VISIT,
+            type: DESITE_ACTIONS.VISIT,
             input: inputVisitMutation,
         };
         this.queue[id] = queueAction;
@@ -97,11 +97,11 @@ class Desit implements IDesit {
     interact(
         type: string,
         element: ReactElement | string,
-        options?: DesitInteractOptions,
+        options?: DesiteInteractOptions,
     ) {
         const elementName = getElementName(element);
 
-        const inputInteractMutation: InputDesitInteract = {
+        const inputInteractMutation: InputDesiteInteract = {
             timestamp: Date.now(),
             appID: this.options.appID,
             type,
@@ -120,7 +120,7 @@ class Desit implements IDesit {
         const id = uuid();
         const queueAction: QueueAction = {
             id,
-            type: DESIT_ACTIONS.INTERACT,
+            type: DESITE_ACTIONS.INTERACT,
             input: inputInteractMutation,
         };
         this.queue[id] = queueAction;
@@ -150,12 +150,12 @@ class Desit implements IDesit {
         action: QueueAction,
     ) {
         switch (action.type) {
-            case DESIT_ACTIONS.VISIT:
+            case DESITE_ACTIONS.VISIT:
                 return await this.dispatchVisit(
                     action.id,
                     action.input,
                 );
-            case DESIT_ACTIONS.INTERACT:
+            case DESITE_ACTIONS.INTERACT:
                 return await this.dispatchInteract(
                     action.id,
                     action.input,
@@ -167,12 +167,12 @@ class Desit implements IDesit {
 
     private async dispatchVisit(
         actionID: string,
-        input: InputDesitVisit,
+        input: InputDesiteVisit,
     ) {
         try {
             this.removeFromQueue(actionID);
             return await this.client.mutate({
-                mutation: DESIT_VISIT,
+                mutation: DESITE_VISIT,
                 variables: {
                     input,
                 },
@@ -190,12 +190,12 @@ class Desit implements IDesit {
 
     private async dispatchInteract(
         actionID: string,
-        input: InputDesitInteract,
+        input: InputDesiteInteract,
     ) {
         try {
             this.removeFromQueue(actionID);
             return await this.client.mutate({
-                mutation: DESIT_INTERACT,
+                mutation: DESITE_INTERACT,
                 variables: {
                     input,
                 },
@@ -213,4 +213,4 @@ class Desit implements IDesit {
 }
 
 
-export default Desit;
+export default Desite;

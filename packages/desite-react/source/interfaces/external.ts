@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-export interface IDesit {
+export interface IDesite {
     /**
      * Trigger when the user visits a page,
      * be it a server-delivered page, or a client-controlled page.
@@ -12,7 +12,7 @@ export interface IDesit {
      * */
     visit(
         path: string,
-        options?: DesitVisitOptions,
+        options?: DesiteVisitOptions,
     ): void;
 
     /**
@@ -29,14 +29,14 @@ export interface IDesit {
     interact(
         type: string,
         element: ReactElement | string,
-        options?: DesitInteractOptions,
+        options?: DesiteInteractOptions,
     ): void;
 }
 
 
-export interface DesitOptions {
+export interface DesiteOptions {
     /**
-     * Application ID obtained from https://account.plurid.com/desit,
+     * Application ID obtained from https://account.plurid.com/Desite,
      * or generated if self-hosting.
      */
     appID: string;
@@ -59,13 +59,13 @@ export interface DesitOptions {
 }
 
 
-export interface DesitVisitOptions {
+export interface DesiteVisitOptions {
     userID?: string;
     meta?: unknown;
 }
 
 
-export interface DesitInteractOptions {
+export interface DesiteInteractOptions {
     userID?: string;
     path?: string;
     meta?: unknown;

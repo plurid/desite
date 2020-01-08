@@ -1,4 +1,4 @@
-export enum DESIT_ACTIONS {
+export enum DESITE_ACTIONS {
     VISIT = 'VISIT',
     INTERACT = 'INTERACT',
 };

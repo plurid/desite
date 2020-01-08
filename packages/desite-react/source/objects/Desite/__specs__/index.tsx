@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Desit from '../';
+import Desite from '../';
 
 import {
     INTERACT_TYPES,
@@ -28,11 +28,11 @@ class ButtonClass extends React.Component {
     }
 }
 
-describe('Desit', () => {
-    const desitAppID = 'desit_18b70b77f4b1454b826ba0677240b9ac';
+describe('Desite', () => {
+    const desitAppID = 'desite_18b70b77f4b1454b826ba0677240b9ac';
 
     it('visit', () => {
-        const desit = new Desit({
+        const desit = new Desite({
             appID: desitAppID,
         });
         // desit.visit('/one');
@@ -42,7 +42,7 @@ describe('Desit', () => {
     });
 
     it('interact', () => {
-        const desit = new Desit({
+        const desit = new Desite({
             appID: desitAppID,
         });
         // desit.interact(INTERACT_TYPES.click, ButtonJSX, {userID: 'one'});

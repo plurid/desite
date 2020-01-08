@@ -2,9 +2,9 @@ import gql from 'graphql-tag';
 
 
 
-export const DESIT_VISIT = gql`
-    mutation DesitVisit($input: InputDesitVisit!) {
-        desitVisit(input: $input) {
+export const DESITE_VISIT = gql`
+    mutation DesiteVisit($input: InputDesiteVisit!) {
+        desiteVisit(input: $input) {
             status
             errors {
                 path
@@ -16,9 +16,9 @@ export const DESIT_VISIT = gql`
 `;
 
 
-export const DESIT_INTERACT = gql`
-    mutation DesitInteract($input: InputDesitInteract!) {
-        desitInteract(input: $input) {
+export const DESITE_INTERACT = gql`
+    mutation DesiteInteract($input: InputDesiteInteract!) {
+        desiteInteract(input: $input) {
             status
             errors {
                 path
