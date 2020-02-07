@@ -29,9 +29,9 @@ class ButtonClass extends React.Component {
 }
 
 describe('Desite', () => {
-    const desitAppID = 'desite_18b70b77f4b1454b826ba0677240b9ac';
+    const desitAppID = 'desite_4577163a365549909762bee3dc3d3956';
 
-    it('visit', () => {
+    it.only('visit', () => {
         const desit = new Desite({
             appID: desitAppID,
         });
