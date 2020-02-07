@@ -1,6 +1,6 @@
 {
     "name": "@plurid/desite-react",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "React implementation of desite to track user sittings.",
     "keywords": [
         "desite",
