@@ -1,12 +1,10 @@
 import {
     ApolloClient,
-} from 'apollo-client';
-import {
     NormalizedCacheObject,
-} from 'apollo-cache-inmemory';
+} from '@apollo/client';
 
 import {
-    uuidv4 as uuid,
+    uuid,
 } from '@plurid/plurid-functions';
 
 import {
@@ -49,7 +47,7 @@ class Desite implements IDesite {
     private options: DesiteOptions;
     private client: ApolloClient<NormalizedCacheObject>;
     private queue: Indexed<QueueAction>;
-    private instanceID = uuid() + uuid();
+    private instanceID = uuid.generate() + uuid.generate();
 
     constructor(options: DesiteOptions) {
         this.options = options;
@@ -85,7 +83,7 @@ class Desite implements IDesite {
             },
         };
 
-        const id = uuid();
+        const id = uuid.generate();
         const queueAction: QueueAction = {
             id,
             type: DESITE_ACTIONS.VISIT,
@@ -117,7 +115,7 @@ class Desite implements IDesite {
             },
         };
 
-        const id = uuid();
+        const id = uuid.generate();
         const queueAction: QueueAction = {
             id,
             type: DESITE_ACTIONS.INTERACT,
