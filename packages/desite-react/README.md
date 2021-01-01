@@ -54,6 +54,37 @@ yarn add @plurid/desite-react
 
 
 
+## Usage
+
+``` typescript
+import Desite, {
+    INTERACT_TYPES,
+} from '@plurid/desite-react';
+
+
+const main = () => {
+    const appID = 'obtained-application-id';
+
+    const desite = new Desite({
+        appID,
+    });
+
+    desite.visit(
+        '/visited/path',
+    );
+
+    desite.interact(
+        INTERACT_TYPES.click,
+        'clicked-element',
+    );
+}
+
+
+main();
+```
+
+
+
 ## Packages
 
 <a target="_blank" href="https://www.npmjs.com/package/@plurid/desite-react">
