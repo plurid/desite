@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Desite from '../';
+import Desite from '..';
 
 import {
     INTERACT_TYPES,
-} from '../../../constants'
+} from '../../../data/constants'
 
 
 

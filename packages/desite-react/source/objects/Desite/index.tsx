@@ -14,22 +14,22 @@ import {
     DesiteInteractOptions,
 
     ReactElement,
-} from '../../interfaces/external';
+} from '../../data/interfaces/external';
 
 import {
     Indexed,
     QueueAction,
     InputDesiteVisit,
     InputDesiteInteract,
-} from '../../interfaces/internal';
+} from '../../data/interfaces/internal';
 
 import {
     PLURID_API_ENDPOINT,
-} from '../../constants';
+} from '../../data/constants';
 
 import {
     DESITE_ACTIONS,
-} from '../../enumerations';
+} from '../../data/enumerations';
 
 import graphqlClient from '../../services/graphql/client';
 import {

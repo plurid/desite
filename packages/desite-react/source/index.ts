@@ -1,5 +1,5 @@
-export * from './constants';
-export * from './interfaces/external';
+export * from './data/constants';
+export * from './data/interfaces/external';
 
 
 import Desite from './objects/Desite';

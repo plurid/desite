@@ -1,4 +1,4 @@
-import environment from '../services/utilities/environment';
+import environment from '../../services/utilities/environment';
 
 
 
