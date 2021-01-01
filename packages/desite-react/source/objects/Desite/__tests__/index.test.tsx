@@ -1,13 +1,21 @@
-import React from 'react';
-
-import Desite from '..';
-
-import {
-    INTERACT_TYPES,
-} from '../../../data/constants'
+// #region imports
+    // #region libraries
+    import React from 'react';
+    // #endregion libraries
 
 
+    // #region external
+    import Desite from '../';
 
+    import {
+        INTERACT_TYPES,
+    } from '../../../data/constants'
+    // #endregion external
+// #endregion imports
+
+
+
+// #region module
 const ButtonJSX = (<button>Click Me</button>);
 
 const ButtonFC: React.FC<any> = () => {
@@ -60,3 +68,4 @@ describe('Desite', () => {
         expect(true).toBeTruthy();
     });
 });
+// #endregion module

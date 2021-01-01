@@ -1,14 +1,22 @@
-import {
-    DesiteVisitOptions,
-    DesiteInteractOptions,
-} from './external';
-
-import {
-    DESITE_ACTIONS,
-} from '../enumerations';
+// #region imports
+    // #region external
+    import {
+        DESITE_ACTIONS,
+    } from '../enumerations';
+    // #endregion external
 
 
+    // #region internal
+    import {
+        DesiteVisitOptions,
+        DesiteInteractOptions,
+    } from './external';
+    // #endregion internal
+// #endregion imports
 
+
+
+// #region module
 export interface QueueActionPure {
     id: string;
 }
@@ -47,3 +55,4 @@ export interface InputDesiteInteract {
     element: string;
     options: DesiteInteractOptions;
 }
+// #endregion module

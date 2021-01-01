@@ -1,7 +1,12 @@
-import React from 'react';
+// #region imports
+    // #region libraries
+    import React from 'react';
+    // #endregion libraries
+// #endregion imports
 
 
 
+// #region module
 export interface IDesite {
     /**
      * Trigger when the user visits a page,
@@ -72,4 +77,8 @@ export interface DesiteInteractOptions {
 }
 
 
-export type ReactElement = JSX.Element | React.FC | typeof React.Component;
+export type ReactElement =
+    | JSX.Element
+    | React.FC
+    | typeof React.Component;
+// #endregion module

@@ -1,9 +1,14 @@
+// #region imports
+    // #region internal
+    import Desite from './objects/Desite';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region external
 export * from './data/constants';
 export * from './data/interfaces/external';
 
-
-import Desite from './objects/Desite';
-
-
-
 export default Desite;
+// #endregion external

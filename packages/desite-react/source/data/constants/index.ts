@@ -1,7 +1,12 @@
-import environment from '../../services/utilities/environment';
+// #region imports
+    // #region external
+    import environment from '../../services/utilities/environment';
+    // #endregion external
+// #endregion imports
 
 
 
+// #region module
 /**
  * General interaction types to be used with `interact`.
  * Loosely based on https://developer.mozilla.org/en-US/docs/Web/Events
@@ -66,3 +71,4 @@ export const PLURID_API_ENDPOINT = environment.production
     : environment.development
         ? 'https://api.plurid.dev/graphql'
         : 'http://localhost:33600/graphql';
+// #endregion module

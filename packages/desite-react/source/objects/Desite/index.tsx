@@ -1,53 +1,62 @@
-import {
-    ApolloClient,
-    NormalizedCacheObject,
-} from '@apollo/client';
+// #region imports
+    // #region libraries
+    import {
+        ApolloClient,
+        NormalizedCacheObject,
+    } from '@apollo/client';
 
-import {
-    uuid,
-} from '@plurid/plurid-functions';
-
-import {
-    IDesite,
-    DesiteOptions,
-    DesiteVisitOptions,
-    DesiteInteractOptions,
-
-    ReactElement,
-} from '../../data/interfaces/external';
-
-import {
-    Indexed,
-    QueueAction,
-    InputDesiteVisit,
-    InputDesiteInteract,
-} from '../../data/interfaces/internal';
-
-import {
-    PLURID_API_ENDPOINT,
-} from '../../data/constants';
-
-import {
-    DESITE_ACTIONS,
-} from '../../data/enumerations';
-
-import graphqlClient from '../../services/graphql/client';
-import {
-    DESITE_VISIT,
-    DESITE_INTERACT,
-} from '../../services/graphql/mutate';
-
-import {
-    getElementName,
-} from '../../services/utilities/react';
+    import {
+        uuid,
+    } from '@plurid/plurid-functions';
+    // #endregion libraries
 
 
+    // #region external
+    import {
+        IDesite,
+        DesiteOptions,
+        DesiteVisitOptions,
+        DesiteInteractOptions,
 
+        ReactElement,
+    } from '../../data/interfaces/external';
+
+    import {
+        Indexed,
+        QueueAction,
+        InputDesiteVisit,
+        InputDesiteInteract,
+    } from '../../data/interfaces/internal';
+
+    import {
+        PLURID_API_ENDPOINT,
+    } from '../../data/constants';
+
+    import {
+        DESITE_ACTIONS,
+    } from '../../data/enumerations';
+
+    import graphqlClient from '../../services/graphql/client';
+    import {
+        DESITE_VISIT,
+        DESITE_INTERACT,
+    } from '../../services/graphql/mutate';
+
+    import {
+        getElementName,
+    } from '../../services/utilities/react';
+    // #endregion external
+// #endregion imports
+
+
+
+// #region module
 class Desite implements IDesite {
     private options: DesiteOptions;
     private client: ApolloClient<NormalizedCacheObject>;
     private queue: Indexed<QueueAction>;
     private instanceID = uuid.generate() + uuid.generate();
+
 
     constructor(options: DesiteOptions) {
         this.options = options;
@@ -64,7 +73,14 @@ class Desite implements IDesite {
         }
     }
 
-    visit(
+
+    /**
+     * Record a visit.
+     *
+     * @param path
+     * @param options
+     */
+    public visit(
         path: string,
         options?: DesiteVisitOptions,
     ) {
@@ -92,7 +108,14 @@ class Desite implements IDesite {
         this.queue[id] = queueAction;
     }
 
-    interact(
+    /**
+     * Record an interaction.
+     *
+     * @param type
+     * @param element
+     * @param options
+     */
+    public interact(
         type: string,
         element: ReactElement | string,
         options?: DesiteInteractOptions,
@@ -123,6 +146,7 @@ class Desite implements IDesite {
         };
         this.queue[id] = queueAction;
     }
+
 
     private queueChange() {
         return {
@@ -209,6 +233,10 @@ class Desite implements IDesite {
         // dispatch multiple interacts based on queue throttling
     }
 }
+// #endregion module
 
 
+
+// #region exports
 export default Desite;
+// #endregion exports
